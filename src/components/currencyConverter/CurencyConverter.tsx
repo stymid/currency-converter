@@ -1,13 +1,23 @@
-import useCurrency from "../../hooks/useCurrency";
+import { useState } from "react";
+import FormComponent from "./FormComponent";
 
 const CurencyConverter = () => {
-  const { data, error, isLoading } = useCurrency();
-  if (error) <p>unexpecter error happend</p>;
-  if (isLoading)
-    <div className="spinner-border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>;
-  return <p> Dollar: {data?.usd_sell.value}</p>;
+  const [amount, setAmount] = useState<number>(0);
+  const [isRialToDollar, setIsRialToDollar] = useState<boolean>(true);
+
+  console.log("value", amount);
+  console.log("isRialtoDollar", isRialToDollar);
+
+  const handleConvert = (amount: number, isRialToDollar: boolean) => {
+    setAmount(amount);
+    setIsRialToDollar(isRialToDollar);
+  };
+
+  return (
+    <div className="container">
+      <FormComponent onConvert={handleConvert} />
+    </div>
+  );
 };
 
 export default CurencyConverter;
