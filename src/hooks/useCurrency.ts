@@ -13,7 +13,7 @@ const useCurrency = () =>
     queryFn: () =>
       axios
         .get<Currency>(
-          "https://api.navasan.tech/latest/?item=usd_sell&api_key=free4RLDMk84z7yFwGLUdc8zAyxw72OS"
+          `https://api.navasan.tech/latest/?item=usd_sell&api_key=${process.env.REACT_APP_API_KEY}`
         )
         .then((res) => res.data),
   });
