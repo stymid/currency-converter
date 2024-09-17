@@ -1,35 +1,39 @@
 import React, { useState } from "react";
 
 interface FormComponentProps {
-  onConvert: (amount: number, isRialToDollar: boolean) => void;
+  onConvert: (amount: number, isTomanToDollar: boolean) => void;
 }
 
 const FormComponent: React.FC<FormComponentProps> = ({ onConvert }) => {
   const [amount, setAmount] = useState<number>(0);
-  const [isRialToDollar, setIsRialToDollar] = useState<boolean>(true);
+  const [isTomanToDollar, setIsTomanToDollar] = useState<boolean>(true);
 
   const handleToggle = () => {
-    setIsRialToDollar(!isRialToDollar);
+    setIsTomanToDollar(!isTomanToDollar);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onConvert(amount, isRialToDollar);
+    onConvert(amount, isTomanToDollar);
   };
 
   return (
     <div className="container">
       <form onSubmit={handleSubmit} className="text-center">
         <div className="d-flex justify-content-center mb-3">
-          <div className="p-2 border">{isRialToDollar ? "Rial" : "Dollar"}</div>
+          <div className="p-2 border">
+            {isTomanToDollar ? "Toman" : "Dollar"}
+          </div>
           <button
             type="button"
             className="btn btn-secondary mx-2"
             onClick={handleToggle}
           >
-            {isRialToDollar ? "Convert to Dollar" : "Convert to Rial"}
+            {isTomanToDollar ? "Convert to Dollar" : "Convert to Toman"}
           </button>
-          <div className="p-2 border">{isRialToDollar ? "Dollar" : "Rial"}</div>
+          <div className="p-2 border">
+            {isTomanToDollar ? "Dollar" : "Toman"}
+          </div>
         </div>
         <div className="mb-3">
           <input

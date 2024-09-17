@@ -1,21 +1,25 @@
 import { useState } from "react";
 import FormComponent from "./FormComponent";
+import Result from "./Result";
 
 const CurencyConverter = () => {
   const [amount, setAmount] = useState<number>(0);
-  const [isRialToDollar, setIsRialToDollar] = useState<boolean>(true);
-
-  console.log("value", amount);
-  console.log("isRialtoDollar", isRialToDollar);
-
-  const handleConvert = (amount: number, isRialToDollar: boolean) => {
+  const [isTomanToDollar, setIsTomanToDollar] = useState<boolean>(true);
+  /**
+   * Handles the conversion process by updating the amount and conversion direction.
+   *
+   * @param amount - The amount to be converted.
+   * @param isTomanToDollar - Boolean indicating if the conversion is from Toman to Dollar.
+   */
+  const handleConvert = (amount: number, isTomanToDollar: boolean) => {
     setAmount(amount);
-    setIsRialToDollar(isRialToDollar);
+    setIsTomanToDollar(isTomanToDollar);
   };
 
   return (
     <div className="container">
       <FormComponent onConvert={handleConvert} />
+      <Result amount={amount} isTomanToDollar={isTomanToDollar} />
     </div>
   );
 };
