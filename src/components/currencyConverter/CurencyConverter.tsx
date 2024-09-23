@@ -11,14 +11,19 @@ const CurencyConverter = () => {
    * @param amount - The amount to be converted.
    * @param isTomanToDollar - Boolean indicating if the conversion is from Toman to Dollar.
    */
-  const handleConvert = (amount: number, isTomanToDollar: boolean) => {
+  const handleAmount = (amount: number) => {
     setAmount(amount);
+  };
+  const handleIsTomanToDollar = (isTomanToDollar: boolean) => {
     setIsTomanToDollar(isTomanToDollar);
   };
 
   return (
     <div className="container">
-      <FormComponent onConvert={handleConvert} />
+      <FormComponent
+        onAmount={handleAmount}
+        onIsTomanToDollar={handleIsTomanToDollar}
+      />
       <Result amount={amount} isTomanToDollar={isTomanToDollar} />
     </div>
   );

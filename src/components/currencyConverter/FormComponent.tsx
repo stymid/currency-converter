@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 
-interface FormComponentProps {
-  onConvert: (amount: number, isTomanToDollar: boolean) => void;
+interface Props {
+  onAmount: (amount: number) => void;
+  onIsTomanToDollar: (isTomanToDollar: boolean) => void;
 }
 
-const FormComponent: React.FC<FormComponentProps> = ({ onConvert }) => {
+const FormComponent = ({ onAmount, onIsTomanToDollar }: Props) => {
   const [amount, setAmount] = useState<number>(0);
   const [isTomanToDollar, setIsTomanToDollar] = useState<boolean>(true);
 
   const handleToggle = () => {
-    setIsTomanToDollar(!isTomanToDollar);
+    const newIsTomanToDollar = !isTomanToDollar;
+    setIsTomanToDollar(newIsTomanToDollar);
+    onIsTomanToDollar(newIsTomanToDollar);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onConvert(amount, isTomanToDollar);
+    onAmount(amount);
   };
 
   return (

@@ -9,8 +9,6 @@ This project is a simple currency converter application built with React and Typ
 - Error handling with default conversion rate
 - Responsive design using Bootstrap
 
-## Getting Started
-
 ### Prerequisites
 
 - Node.js and npm installed on your machine
@@ -49,7 +47,7 @@ The application will be available at http://localhost:3000.
 
 To use this application, you need to obtain an API key from Navasan. Follow these steps:
 
-- Go to Navasan.
+- Go to [Navasan](https://www.navasan.tech/api/).
 - Sign up for an account.
 - Generate a free API key.
 - Add the API key to your .env file as described in the installation steps.
