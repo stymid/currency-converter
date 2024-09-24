@@ -21,6 +21,8 @@ const CurencyConverter = () => {
   return (
     <div className="container">
       <FormComponent
+        amount={amount}
+        isTomanToDollar={isTomanToDollar}
         onAmount={handleAmount}
         onIsTomanToDollar={handleIsTomanToDollar}
       />

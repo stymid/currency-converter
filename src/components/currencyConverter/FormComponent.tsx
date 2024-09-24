@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-
 interface Props {
+  isTomanToDollar: boolean;
+  amount: number;
   onAmount: (amount: number) => void;
   onIsTomanToDollar: (isTomanToDollar: boolean) => void;
 }
 
-const FormComponent = ({ onAmount, onIsTomanToDollar }: Props) => {
-  const [amount, setAmount] = useState<number>(0);
-  const [isTomanToDollar, setIsTomanToDollar] = useState<boolean>(true);
-
+const FormComponent = ({
+  onAmount,
+  onIsTomanToDollar,
+  isTomanToDollar,
+  amount,
+}: Props) => {
   const handleToggle = () => {
-    const newIsTomanToDollar = !isTomanToDollar;
-    setIsTomanToDollar(newIsTomanToDollar);
-    onIsTomanToDollar(newIsTomanToDollar);
+    onIsTomanToDollar(!isTomanToDollar);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -43,7 +43,7 @@ const FormComponent = ({ onAmount, onIsTomanToDollar }: Props) => {
             type="number"
             className="form-control"
             value={amount === 0 ? "" : amount}
-            onChange={(e) => setAmount(parseFloat(e.target.value))}
+            onChange={(e) => onAmount(parseFloat(e.target.value))}
           />
         </div>
         <button type="submit" className="btn btn-primary">
